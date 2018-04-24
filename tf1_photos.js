@@ -45,5 +45,6 @@ function ADDEattachPhotoToProfile(ProfileSysID) {
 		photoGR.table_name = "ZZ_YYlive_profile";
 		photoGR.table_sys_id = ProfileSysID;
 		photoGR.update();
+		
 	}
 }
