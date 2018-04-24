@@ -1,10 +1,10 @@
 //On récupère le sysID de la photo importée par MAP2 et le sysID du user target
-var tf1photo = source.u_tf1photo;
+var Myphoto = source.u_Myphoto;
 var userSysID = target.sys_id;
 var ProfileSysID = "";
 
 //On éxecute la suite du script seulement si MAP2 à envoyé une photo
-if (tf1photo) {
+if (Myphoto) {
 	//On recherche le user grace à ons sysID
 	var grUser = new GlideRecord('sys_user');
 	grUser.get(userSysID);
@@ -39,12 +39,11 @@ if (tf1photo) {
 function ADDEattachPhotoToProfile(ProfileSysID) {
 	var photoGR = new GlideRecord('sys_attachment');
 	//On recherche la photo envoyée par MAP2 pour la transfomer en photo de liveprofile
-	if (photoGR.get(tf1photo)) {
+	if (photoGR.get(Myphoto)) {
 		photoGR.file_name = "photo";
 		photoGR.content_type = "image/png";
 		photoGR.table_name = "ZZ_YYlive_profile";
 		photoGR.table_sys_id = ProfileSysID;
 		photoGR.update();
-		
 	}
 }
