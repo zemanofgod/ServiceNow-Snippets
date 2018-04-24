@@ -36,7 +36,7 @@ if (tf1photo) {
 }
 
 //On récupère le sysID du liveprofile
-function attachPhotoToProfile(ProfileSysID) {
+function ADDEattachPhotoToProfile(ProfileSysID) {
 	var photoGR = new GlideRecord('sys_attachment');
 	//On recherche la photo envoyée par MAP2 pour la transfomer en photo de liveprofile
 	if (photoGR.get(tf1photo)) {
