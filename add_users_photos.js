@@ -3,6 +3,20 @@ var Myphoto = source.u_Myphoto;
 var userSysID = target.sys_id;
 var ProfileSysID = "";
 
+//On récupère le sysID du liveprofile
+function attachPhotoToProfile(ProfileSysID) {
+	"use strict";
+	var photoGR = new GlideRecord('sys_attachment');
+	//On recherche la photo envoyée par MAP2 pour la transfomer en photo de liveprofile
+	if (photoGR.get(Myphoto)) {
+		photoGR.file_name = "photo";
+		photoGR.content_type = "image/png";
+		photoGR.table_name = "ZZ_YYlive_profile";
+		photoGR.table_sys_id = ProfileSysID;
+		photoGR.update();
+	}
+}
+
 //On éxecute la suite du script seulement si MAP2 à envoyé une photo
 if (Myphoto) {
 	//On recherche le user grace à ons sysID
@@ -35,15 +49,4 @@ if (Myphoto) {
 	}
 }
 
-//On récupère le sysID du liveprofile
-function ADDEattachPhotoToProfile(ProfileSysID) {
-	var photoGR = new GlideRecord('sys_attachment');
-	//On recherche la photo envoyée par MAP2 pour la transfomer en photo de liveprofile
-	if (photoGR.get(Myphoto)) {
-		photoGR.file_name = "photo";
-		photoGR.content_type = "image/png";
-		photoGR.table_name = "ZZ_YYlive_profile";
-		photoGR.table_sys_id = ProfileSysID;
-		photoGR.update();
-	}
-}
+
