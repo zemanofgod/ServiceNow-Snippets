@@ -1,12 +1,12 @@
 //On récupère le sysID de la photo importée par MAP2 et le sysID du user target
-var Myphoto = source.u_Myphoto;
-var userSysID = target.sys_id;
+var Myphoto = source.u_Myphoto; // jshint ignore:line
+var userSysID = target.sys_id; // jshint ignore:line
 var ProfileSysID = "";
 
 //On récupère le sysID du liveprofile
 function attachPhotoToProfile(ProfileSysID) {
 	"use strict";
-	var photoGR = new GlideRecord('sys_attachment');
+	var photoGR = new GlideRecord('sys_attachment'); // jshint ignore:line
 	//On recherche la photo envoyée par MAP2 pour la transfomer en photo de liveprofile
 	if (photoGR.get(Myphoto)) {
 		photoGR.file_name = "photo";
@@ -20,11 +20,11 @@ function attachPhotoToProfile(ProfileSysID) {
 //On éxecute la suite du script seulement si MAP2 à envoyé une photo
 if (Myphoto) {
 	//On recherche le user grace à ons sysID
-	var grUser = new GlideRecord('sys_user');
+	var grUser = new GlideRecord('sys_user'); // jshint ignore:line
 	grUser.get(userSysID);
 	
 	//On vérifie si le user à un liveprofile
-	var liveProfile = new GlideRecord('live_profile');
+	var liveProfile = new GlideRecord('live_profile'); // jshint ignore:line
 	liveProfile.addQuery('table', 'sys_user');
 	liveProfile.addQuery('type', 'user');
 	liveProfile.addQuery('document', userSysID);
