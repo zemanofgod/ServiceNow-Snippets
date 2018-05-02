@@ -17,7 +17,7 @@ function Counting(table) {
 MassDelete("sys_attachment"); //tablename
 
 function MassDelete(table) {
-    var grPhotos = new GlideRecord('sys_attachment');
+    var grPhotos = new GlideRecord('table');
     grPhotos.addEncodedQuery("file_nameLIKEtf1photo");
     grPhotos.setWorkflow(false);
     //grPhotos.setLimit(1000);
